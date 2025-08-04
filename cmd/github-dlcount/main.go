@@ -44,8 +44,8 @@ func main() {
 
 	// latestを取得する
 	url := fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", os.Args[1])
-	cmd1 := exec.Command("curl", "-fsSOL", url)
-	err = cmd1.Run()
+	cmd := exec.Command("curl", "-fsSOL", url)
+	err = cmd.Run()
 	if err != nil {
 		panic(err)
 	}
@@ -74,9 +74,5 @@ func main() {
 	}
 
 	// latestを削除する
-	cmd2 := exec.Command("cmd", "/c", "del latest")
-	err = cmd2.Run()
-	if err != nil {
-		panic(err)
-	}
+    utils.RemoveLatestFile()
 }

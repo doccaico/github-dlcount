@@ -22,3 +22,11 @@ func GetCounts(url string) []string {
 	counts := strings.Split(string(out), "\r\n")
 	return counts[:len(counts)-1]
 }
+
+func RemoveLatestFile() {
+	cmd := exec.Command("cmd", "/c", "del latest")
+    err := cmd.Run()
+	if err != nil {
+		panic(err)
+	}
+}
